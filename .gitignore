@@ -1,0 +1,9 @@
+/consumer/kafka-cdc.log
+/log/*
+/loki
+/kafka_2.13-3.9.0
+/grafana-v11.6.1
+/loki-config.yaml
+/loki-linux-amd64
+/promtail-config.yaml
+/promtail-linux-amd64
