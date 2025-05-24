@@ -2,7 +2,7 @@ import psycopg2 # type: ignore
 import random
 import uuid
 
-conn = psycopg2.connect(database="source_db", user="posgres", password="admin123")
+conn = psycopg2.connect(host="localhost", database="source_db", user="postgres", password="admin123")
 cur = conn.cursor()
 
 names = ["Alice", "Bob", "Charlie", "David"]

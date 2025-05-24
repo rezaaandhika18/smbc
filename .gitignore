@@ -1,4 +1,5 @@
-/consumer/kafka-cdc.log
+/consumer
+/.vscode
 /log/*
 /loki
 /kafka_2.13-3.9.0
