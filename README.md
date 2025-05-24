@@ -19,6 +19,20 @@ CREATE TABLE customers (
     email TEXT NOT NULL,
     updated_at TIMESTAMP NOT NULL DEFAULT NOW()
 );
+
+--Create Trigger When Update
+CREATE OR REPLACE FUNCTION set_updated_at()
+RETURNS TRIGGER AS $$
+BEGIN
+  NEW.updated_at := now();
+  RETURN NEW;
+END;
+$$ LANGUAGE plpgsql;
+
+CREATE TRIGGER set_timestamp
+BEFORE UPDATE ON customers
+FOR EACH ROW
+EXECUTE FUNCTION set_updated_at();
 ```
 
 Create Replicator and publisher :
