@@ -364,6 +364,7 @@ autorestart=true
 stdout_logfile=/mnt/e/smbc/log/zookeeper.out.log
 stderr_logfile=/mnt/e/smbc/log/zookeeper.err.log
 user=apps
+```
 
 Create your own config kafka-broker (e.g. `kafka-broker.conf`)
 sudo nano /etc/supervisor/conf.d/kafka-broker.conf
