@@ -296,7 +296,7 @@ server:
                 - localhost
                 labels:
                 job: kafka-cdc
-                __path__: /mnt/e/smbc/consumer/kafka-cdc.log #path yout export JSON
+                __path__: /mnt/e/smbc/consumer/kafka-cdc.log #path your export JSON
 ```
 
 ### Grafana:
@@ -347,10 +347,14 @@ Visualize Logs in Grafana
 - Install `supervisor`
 ```ini
 sudo apt install supervisor
+sudo sytemctl status supervisor
+sudo sytemctl start supervisor
+sudo sytemctl stop supervisor
 ```
 
 - Config supervisor
 Create your own config zookeeper (e.g. `zookeeper.conf`)
+sudo nano /etc/supervisor/conf.d/zookeeper.conf
 ```ini
 [program:zookeeper]
 command=/mnt/e/smbc/kafka_2.13-3.9.0/bin/zookeeper-server-start.sh /mnt/e/smbc/kafka_2.13-3.9.0/config/zookeeper.properties
@@ -362,6 +366,7 @@ stderr_logfile=/mnt/e/smbc/log/zookeeper.err.log
 user=apps
 
 Create your own config kafka-broker (e.g. `kafka-broker.conf`)
+sudo nano /etc/supervisor/conf.d/kafka-broker.conf
 ```ini
 [program:kafka-broker]
 command=/mnt/e/smbc/kafka_2.13-3.9.0/bin/kafka-server-start.sh /mnt/e/smbc/kafka_2.13-3.9.0/config/server.properties
@@ -374,6 +379,7 @@ user=apps
 ```
 
 Create your own config kafka (e.g. `kafka-connect.conf`)
+sudo nano /etc/supervisor/conf.d/kafka.conf
 ```ini
 [program:kafka-connect]
 command=/mnt/e/smbc/kafka_2.13-3.9.0/bin/connect-standalone.sh /mnt/e/smbc/kafka_2.13-3.9.0/config/connect-standalone.properties /mnt/e/smbc/kafka_2.13-3.9.0/config/pg-connector.properties
@@ -386,6 +392,7 @@ user=apps
 ```
 
 Create your own config consume (e.g. `consume.conf`)
+sudo nano /etc/supervisor/conf.d/consume.conf
 ```ini
 [program:consume]
 command=/usr/bin/python3 /mnt/e/smbc/consume.py
